@@ -38,9 +38,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
 
 // 使用router
@@ -49,12 +49,12 @@ app.use('/api/profiles', profiles);
 app.use('/api/products', products);
 app.use('/api/orders', orders);
 
-// if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'production') {
   app.use(express.static('vue-client/dist'));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'vue-client', 'dist', index.html))
   });
-// }
+}
 
 app.listen(port, () => {
   console.log(`FCODE::: app listening on port ${port}`)
