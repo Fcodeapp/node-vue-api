@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -13,6 +14,15 @@ const profiles = require('./routes/api/profiles');
 const products = require('./routes/api/products');
 const orders = require('./routes/api/orders');
 
+const corsOptions = {
+  origin: [
+    'http://localhost:5173/',
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
 
 // const express = require('express'),
 //       app = express(),
