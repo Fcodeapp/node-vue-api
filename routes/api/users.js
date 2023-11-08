@@ -83,7 +83,7 @@ router.post('/login', (req, res) => {
             const { id, name, avatart, identity } = user;
             const rule = { id, name, avatart, identity };
 
-            jwt.sign(rule, keys.secretOrKey, {expiresIn: 3000}, (err, token) => {
+            jwt.sign(rule, keys.secretOrKey, {expiresIn: '1h'}, (err, token) => {
               console.log(err)
               if (err) throw err;
               res.json({
