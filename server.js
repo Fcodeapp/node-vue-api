@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'public', 'public', index.html))
   });
-  app.use(history());
+  // app.use(history());
 }
 
 mongoose.connect(db, {
