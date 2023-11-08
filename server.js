@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const history = require('connect-history-api-fallback');
+// const history = require('connect-history-api-fallback');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -39,13 +39,13 @@ const port = process.env.PORT || 8000;
 // app.use(cors(corsOptions));
 app.use(cors());
 
-if (process.env.NODE_ENV === 'production') {
-  // app.use(express.static(__dirname + "/public"));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'public', index.html))
-  });
-  // app.use(history());
-}
+// if (process.env.NODE_ENV === 'production') {
+//   // app.use(express.static(__dirname + "/public"));
+//   app.get('*', (req, res) => {
+//     res.sendFile(path.resolve(__dirname, 'public', 'public', index.html))
+//   });
+//   // app.use(history());
+// }
 
 mongoose.connect(db, {
   useNewUrlParser: true,
@@ -73,9 +73,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
-// app.get('/', (req, res) => {
-//   res.send('Hello World!')
-// })
+app.get('/', (req, res) => {
+  // res.sendFile(path.resolve(__dirname, 'vue-client', 'dist', 'index.html'))
+  res.send('Hello World!')
+})
 
 
 // 使用router
@@ -83,6 +84,13 @@ app.use('/api/users', users);
 app.use('/api/profiles', profiles);
 app.use('/api/products', products);
 app.use('/api/orders', orders);
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('vue-client/dist'));
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.resolve(__dirname, 'vue-client', 'dist', 'index.html'))
+  // });
+}
 
 
 app.listen(port, () => {
