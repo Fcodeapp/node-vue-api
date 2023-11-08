@@ -28,6 +28,8 @@ const port = process.env.PORT || 8000;
 const corsOptions = {
   origin: [
     'http://localhost:5173/',
+    'http://cms.fcode.pro/',
+    'https://cms.fcode.pro/',
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   allowedHeaders: ['Content-Type', 'Authorization'],
