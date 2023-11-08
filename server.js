@@ -14,15 +14,16 @@ const profiles = require('./routes/api/profiles');
 const products = require('./routes/api/products');
 const orders = require('./routes/api/orders');
 
-const corsOptions = {
-  origin: [
-    'http://localhost:5173/',
-  ],
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-  allowedHeaders: ['Content-Type', 'Authorization'],
-};
+// const corsOptions = {
+//   origin: [
+//     'http://localhost:5173/',
+//   ],
+//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+//   allowedHeaders: ['Content-Type', 'Authorization'],
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 
 // const express = require('express'),
 //       app = express(),
