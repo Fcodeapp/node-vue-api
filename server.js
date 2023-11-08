@@ -14,17 +14,6 @@ const profiles = require('./routes/api/profiles');
 const products = require('./routes/api/products');
 const orders = require('./routes/api/orders');
 
-// const corsOptions = {
-//   origin: [
-//     'http://localhost:5173/',
-//   ],
-//   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-//   allowedHeaders: ['Content-Type', 'Authorization'],
-// };
-
-// app.use(cors(corsOptions));
-app.use(cors());
-
 // const express = require('express'),
 //       app = express(),
 //       bodyParser = require('body-parser');
@@ -33,7 +22,19 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 // console.log(process.env.PORT)
-// console.log(process.env["DB_HOST"]); 
+// console.log(process.env["DB_HOST"]);
+
+
+const corsOptions = {
+  origin: [
+    'http://localhost:5173/',
+  ],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+app.use(cors(corsOptions));
+// app.use(cors());
 
 mongoose.connect(db, {
   useNewUrlParser: true,
