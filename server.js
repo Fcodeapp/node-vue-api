@@ -24,9 +24,21 @@ const port = process.env.PORT || 8000;
 // console.log(process.env.PORT)
 // console.log(process.env["DB_HOST"]); 
 
-mongoose.connect(db)
+mongoose.connect(db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
   .then(() => console.log('Connected to MongoDB...'))
   .catch(err => console.log(err));
+
+//** */
+
+const connection = mongoose.connection;
+
+connection.once('open', () => {
+  console.log('mogoose connect!!!');
+});
+//** */
 
 // passpost初始化
 app.use(passport.initialize());
