@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-// const history = require('connect-history-api-fallback');
+const history = require('connect-history-api-fallback');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -21,7 +21,7 @@ const orders = require('./routes/api/orders');
 
 const app = express();
 const port = process.env.PORT || 8000;
-
+app.use(history());
 // console.log(process.env.PORT)
 // console.log(process.env["DB_HOST"]);
 
