@@ -19,7 +19,6 @@ router.get('/test', (req, res) => {
 // @dsc     返回請求的json資料
 // @access  Public
 router.post('/register', (req, res) => {
-  console.log(req.body);
 
   // 查詢資料庫是否有email
   User.findOne({ email: req.body.email })
@@ -67,7 +66,6 @@ router.post('/login', (req, res) => {
   
   User.findOne({email})
     .then(user => {
-      console.log('=== user' + user)
       if (!user) {
         return res.json({
           success: false,
