@@ -147,4 +147,8 @@ router.get('/all', passport.authenticate('jwt', { session: false }), (req, res) 
     });
 });
 
+router.get('/checkToken', passport.authenticate('jwt', { session: false }), (req, res) => {
+  res.json({ msg: 'success' })
+});
+
 module.exports = router;
