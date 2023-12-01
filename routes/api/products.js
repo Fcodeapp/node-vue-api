@@ -113,8 +113,8 @@ router.delete('/delete/:id', passport.authenticate('jwt', {session: false}), (re
 
 // $route   POST api/products/
 // @dsc     取得products全部資料
-// @access  Private
-router.get('/', passport.authenticate('jwt', { session: false }), (req, res) => {
+// @access  Public
+router.get('/', (req, res) => {
   // 查詢資料
   Product.find()
     .then(product => {
